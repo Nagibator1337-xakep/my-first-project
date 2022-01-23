@@ -59,6 +59,8 @@
   
   .error-msg {
     color: red;
+    font-weight: bold;
+    text-align: center;
   }
 
   li {
