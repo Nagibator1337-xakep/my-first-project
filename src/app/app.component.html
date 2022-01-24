@@ -8,11 +8,16 @@
       <li>player 4</li>
     </ul>
     <div class="add-members-container">
-      <input type="text" placeholder="Enter Name here" id="addMemberTextFieldId" (keyup)="onKey($event)"/>
+      <input
+        type="text"
+        placeholder="Enter Name here"
+        id="addMemberTextFieldId"
+        (keyup)="onKey($event)"
+      />
       <button (click)="addMember()">Add</button>
     </div>
     <div class="input-container">
-      <input type="text" placeholder="# of teams"/>
+      <input type="text" placeholder="# of teams" />
       <button>Generate</button>
     </div>
     <div class="error-msg"></div>
