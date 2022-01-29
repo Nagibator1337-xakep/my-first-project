@@ -1,10 +1,14 @@
 <div class="container">
-  <div class="ui card">
+  <div 
+    class="ui card"
+    [style.border]="errorMsg=='' ? '' : '1px solid red'">
+    
     <h1>Team Generator</h1>
     <ul class="list">
       <li 
         *ngFor="let member of members" 
-        [appHighlight]='color'>
+        [appHighlight]='color'
+      >
         {{ member }}
       </li>
     </ul>
@@ -14,14 +18,31 @@
         type="text"
         placeholder="Enter Name here"
         (input)="onInput(addMemberInput.value)"
+        (keyup.enter)="addMember()"
         [value]="newMemberName"
       />
-      <button (click)="addMember()">Add</button>
+      <button id="add" (click)="addMember()">Add</button>
+      <button id="clear" (click)="clear()">Clear</button>
     </div>
     <div class="input-container">
-      <input type="text" placeholder="# of teams" />
-      <button>Generate</button>
+      <input
+        #numberOfTeamsInput 
+        type="text" 
+        placeholder="# of teams" 
+        (input)="onNumberOfTeamsInput(numberOfTeamsInput.value)"
+        [value]="numberOfTeams"
+      />
+      <button (click)="generateTeams()">Generate</button>
     </div>
     <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
   </div>
+
+  <div *ngIf="teams.length" class="teams-conteiner">
+    <app-team
+      *ngFor="let team of teams; index as i"
+      [team]="team"
+      [index]="i"
+    ></app-team>
+  </div>
+
 </div>
